@@ -77,7 +77,8 @@ router.post(
   upload.single("csv"),
   async (req, res) => {
     try {
-      const location = path.join(__dirname, "../../multer/tmp/abc.csv");
+      // const location = path.join(__dirname, "../../multer/tmp/abc.csv");
+      const location = "/tmp/abc.csv";
       const fileData = fs.readFileSync(location, "utf-8");
       const arr = fileData.split("\n");
       let n = arr.length - 1;
@@ -116,7 +117,8 @@ router.post(
 
 router.post("/download", authenticateToken, async (req, res) => {
   try {
-    const location = path.join(__dirname, "../../multer/tmp/contact.csv");
+    // const location = path.join(__dirname, "../../multer/tmp/contact.csv");
+    const location =  "/tmp/contact.csv";
     fs.writeFileSync(
       location,
       "name,designation,company,industry,email,phNo,country\n"
@@ -154,7 +156,8 @@ router.post("/download", authenticateToken, async (req, res) => {
 });
 
 router.get("/Contacts", (req, res) => {
-  const location = path.join(__dirname, "../../multer/tmp/contact.csv");
+  // const location = path.join(__dirname, "../../multer/tmp/contact.csv");
+  const location = "/tmp/contact.csv";
   res.sendFile(location);
 });
 
