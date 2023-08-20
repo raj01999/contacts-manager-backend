@@ -77,7 +77,6 @@ router.post(
   upload.single("csv"),
   async (req, res) => {
     try {
-      // const location = path.join(__dirname, "../../multer/tmp/abc.csv");
       const location = "/tmp/abc.csv";
       const fileData = fs.readFileSync(location, "utf-8");
       const arr = fileData.split("\n");
@@ -117,7 +116,6 @@ router.post(
 
 router.post("/download", authenticateToken, async (req, res) => {
   try {
-    // const location = path.join(__dirname, "../../multer/tmp/contact.csv");
     const location =  "/tmp/contact.csv";
     fs.writeFileSync(
       location,
@@ -145,7 +143,7 @@ router.post("/download", authenticateToken, async (req, res) => {
     });
     res.json({
       status: "sucess",
-      link: "http://localhost:8000/api/Contacts",
+      link: "https://rich-erin-springbok-garb.cyclic.cloud/api/Contacts",
     });
   } catch (e) {
     res.status(500).json({
@@ -156,7 +154,6 @@ router.post("/download", authenticateToken, async (req, res) => {
 });
 
 router.get("/Contacts", (req, res) => {
-  // const location = path.join(__dirname, "../../multer/tmp/contact.csv");
   const location = "/tmp/contact.csv";
   res.sendFile(location);
 });
